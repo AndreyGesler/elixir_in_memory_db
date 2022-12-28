@@ -4,18 +4,18 @@
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `in_memory_db` to your list of dependencies in `mix.exs`:
+Use it as module, run as node!
 
+### Config
+#### Runtime config
 ```elixir
-def deps do
-  [
-    {:in_memory_db, "~> 0.1.0"}
-  ]
-end
-```
+  config :in_memory_db,
+    cookie: get_env!(get_env_name!("CLUSTER_COOKIE"), :atom)
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/in_memory_db>.
+  config :mnesia,
+    dir: String.to_charlist(get_env!(get_env_name!("MNESIAR_IN_MEMORY_DB_PATH"), :string, ".") <> "/Mnesia.#{Node.self()}"),
+    dc_dump_limit: get_env!(get_env_name!("MNESIAR_IN_MEMORY_DC_DUMP_LIMIT"), :integer, 40),
+    dump_log_write_threshold: get_env!(get_env_name!("MNESIAR_IN_MEMORY_DUMP_LOG_WRITE_THRESHOLD"), :integer, 50_000)
+
+```
 
