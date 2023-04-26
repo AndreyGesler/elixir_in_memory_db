@@ -41,7 +41,7 @@ defmodule InMemoryDb do
 
         Logger.info("[#{inspect(SelfModule)}][#{inspect(__ENV__.function)}] I will try set cookie")
 
-        {:ok, cookie} = get_app_env!(:cookie)
+        {:ok, cookie} = get_app_env(:cookie)
         raise_if_empty!(cookie, :atom, "Wrong cookie value")
         Node.set_cookie(Node.self(), cookie)
 
@@ -57,11 +57,11 @@ defmodule InMemoryDb do
           )
         end
 
-        # {:ok, throw_if_connect_to_node_fail} = Utils.get_app_env!(:throw_if_connect_to_node_fail)
+        # {:ok, throw_if_connect_to_node_fail} = Utils.get_app_env(:throw_if_connect_to_node_fail)
         # raise_if_empty!(throw_if_connect_to_node_fail, :boolean)
 
         # Logger.info("[#{inspect(SelfModule)}][#{inspect(__ENV__.function)}] I will try to connect ot email sender nodes")
-        # {:ok, email_sender_nodes} = Utils.get_app_env!(:email_sender_nodes)
+        # {:ok, email_sender_nodes} = Utils.get_app_env(:email_sender_nodes)
         # raise_if_empty!(email_sender_nodes, :list)
 
         # {:ok, email_sender_nodes} = Utils.list_of_strings_to_list_of!(email_sender_nodes)

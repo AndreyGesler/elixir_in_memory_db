@@ -14,7 +14,7 @@ defmodule InMemoryDb.Application do
   # get_topologies.
   """
   defp get_topologies do
-    {:ok, lib_cluster_topologies} = Utils.get_app_env!(:libcluster, :lib_cluster_topologies)
+    {:ok, lib_cluster_topologies} = Utils.get_app_env(:libcluster, :lib_cluster_topologies)
     raise_if_empty!(lib_cluster_topologies, :list, "Wrong lib_cluster_topologies value")
 
     {:ok, lib_cluster_topologies}
